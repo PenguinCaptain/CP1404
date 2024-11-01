@@ -1,21 +1,23 @@
-class ProgrammingLanguage:
-    """Represent information about a programming language."""
+from prac_06.programming_language import ProgrammingLanguage
 
-    def __init__(self, name, typing, reflection, year):
-        """Initialise a ProgrammingLanguage instance."""
-        self.name = name
-        self.typing = typing
-        self.reflection = reflection
-        self.year = year
 
-    def is_dynamic(self):
-        """Determine if the programming language is dynamically typed."""
-        return self.typing == "Dynamic"
+def main():
+    """main function to run the program"""
+    python = ProgrammingLanguage("Python", "Dynamic", True, 1991)
+    print(python)
 
-    def __str__(self):
-        name = self.name
-        typing = self.typing
-        reflection = self.reflection
-        year = self.year
-        return f"{name}, {typing} Typing, Reflection={reflection}, First appeared in {year}"
-        # Python, Dynamic Typing, Reflection=True, First appeared in 1991
+    lang_list = [
+        ProgrammingLanguage("Java", "Static", True, 1995),
+        ProgrammingLanguage("C++", "Static", False, 1983),
+        python,
+        ProgrammingLanguage("Visual Basic", "Static", False, 1991),
+        ProgrammingLanguage("Ruby", "Dynamic", True, 1995),
+    ]
+    print("The dynamically typed languages are:")
+    for lang in lang_list:
+        if lang.is_dynamic():
+            print(lang.name)
+
+
+if __name__ == "__main__":
+    main()
